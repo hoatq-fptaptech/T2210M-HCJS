@@ -1,0 +1,15 @@
+body{
+    background-image: url("../images/photo-1592210454359-9043f067919b.jpeg");
+    background-size: cover;
+    color: #ffffff;
+}
+.weather{
+    background-color: #2c303470;
+    height: 175px;
+}
+.weather h4{
+    font-size: 20px;
+}
+.weather img{
+    transform: translate(170px,-120px);
+}

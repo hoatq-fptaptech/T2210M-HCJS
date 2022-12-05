@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forecast Weather</title>
+    <link rel="stylesheet" href="libs/bootstrap5.2.3/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/forecast.css"/>
+</head>
+<body>
+    <section>
+        <div class="container">
+            <div class="row" id="forecast">
+                <div class="col-3 mb-2 mt-2">
+                    <div class="weather card">
+                        <div class="card-body">
+                            <h4>2022-12-05</h4>
+                            <h2>15<sup>o</sup>C</h2>
+                            <p>Broken clouds</p>
+                            <img src="http://openweathermap.org/img/wn/04n@2x.png"/>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <script type="text/javascript">
+        function forecast(){
+            var xhttp = new XMLHttpRequest();
+            xhttp.onload = function (){
+                var data = JSON.parse(this.responseText);
+                var ls = data.list;
+                for(var i=0;i<ls.length;i++){
+                    var pt = `<div class="col-3 mb-2 mt-2">
+                    <div class="weather card">
+                        <div class="card-body">
+                            <h4>2022-12-05</h4>
+                            <h2>15<sup>o</sup>C</h2>
+                            <p>Broken clouds</p>
+                            <img src="http://openweathermap.org/img/wn/04n@2x.png"/>
+                        </div>
+                    </div>
+                </div>`;
+                    var fc = document.getElementById("forecast");
+                    fc.innerHTML += pt;
+                }
+            }
+            xhttp.open("GET","http://api.openweathermap.org/data/2.5/forecast?q=Hanoi,vietnam&appid=09a71427c59d38d6a34f89b47d75975c&units=metric");
+            xhttp.send();
+        }
+        forecast();
+    </script>
+</body>
+</html>
